@@ -14,13 +14,18 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'https://naria-clint.vercel.app',
-        'https://vercel.com/mahadi-hasans-projects-4d0eced2/naria-clint/AyoKeMQkBKwnfs2r5jikhRrUGsGu'
+// app.use(cors({
+//     origin: [
+//         'http://localhost:5173',
+//         'https://naria-clint.vercel.app',
+//         'https://vercel.com/mahadi-hasans-projects-4d0eced2/naria-clint/AyoKeMQkBKwnfs2r5jikhRrUGsGu'
 
-    ],
+//     ],
+//     credentials: true
+// }));
+
+app.use(cors({
+    origin: '*', // Allow all origins
     credentials: true
 }));
 app.use(express.json());
