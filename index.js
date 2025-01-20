@@ -17,6 +17,9 @@ const port = process.env.PORT || 5000;
 app.use(cors({
     origin: [
         'http://localhost:5173',
+        'https://naria-clint.vercel.app',
+        'https://vercel.com/mahadi-hasans-projects-4d0eced2/naria-clint/AyoKeMQkBKwnfs2r5jikhRrUGsGu'
+
     ],
     credentials: true
 }));
