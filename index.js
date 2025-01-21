@@ -14,16 +14,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
-// app.use(cors({
-//     origin: [
-//         'http://localhost:5173',
-//         'https://naria-clint.vercel.app',
-//         'https://vercel.com/mahadi-hasans-projects-4d0eced2/naria-clint/AyoKeMQkBKwnfs2r5jikhRrUGsGu'
-
-//     ],
-//     credentials: true
-// }));
-
 app.use(cors({
     origin: '*', // Allow all origins
     credentials: true
@@ -41,27 +31,6 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-// ImgBB API configuration
-const IMGBB_API_KEY = '5c49c7e28a6807775bcd1899796bdc4b';
-
-// Function to upload image to ImgBB
-const uploadImageToImgBB = async (imageBuffer) => {
-    try {
-        const formData = new FormData();
-        formData.append('image', imageBuffer, 'image.jpg');
-
-        const response = await axios.post(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, formData, {
-            headers: formData.getHeaders(),
-        });
-
-        if (response.data && response.data.data && response.data.data.url) {
-            return response.data.data.url;
-        }
-        throw new Error('Failed to upload image');
-    } catch (error) {
-        throw new Error(error.message);
-    }
-};
 
 async function run() {
     try {
@@ -167,6 +136,7 @@ async function run() {
                 res.status(500).send("Internal Server Error");
             }
         });
+
         app.delete('/booking/:id', async (req, res) => {
             try {
                 const id = req.params.id;
@@ -193,11 +163,9 @@ async function run() {
         // POST a new card
         app.post('/card', async (req, res) => {
             try {
-                const { title, header, subHeader,
-                    description, imageUrl } = req.body;
+                const { title, header, subHeader, description, imageUrl } = req.body;
                 const newCard = {
-                    title, header, subHeader,
-                    description, imageUrl
+                    title, header, subHeader, description, imageUrl
                 };
                 const result = await CardCollection.insertOne(newCard);
 
@@ -211,8 +179,6 @@ async function run() {
                 res.status(500).send("Internal Server Error");
             }
         });
-
-
 
         // DELETE a card
         app.delete('/card/:id', async (req, res) => {
