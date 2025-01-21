@@ -1,9 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-// const jwt = require('jsonwebtoken');
-// const stripe = require('stripe')(process.env.STRIPE_KEY);
-// const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
