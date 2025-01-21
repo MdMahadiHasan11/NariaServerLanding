@@ -18,8 +18,8 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection URI
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@hajj.zsqpd.mongodb.net/?retryWrites=true&w=majority&appName=Hajj`;
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@clusternariaalllanding.tzrtn.mongodb.net/?retryWrites=true&w=majority&appName=ClusterNariaAllLanding`
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@hajj.zsqpd.mongodb.net/?retryWrites=true&w=majority&appName=Hajj`;
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@clusternariaalllanding.tzrtn.mongodb.net/?retryWrites=true&w=majority&appName=ClusterNariaAllLanding`
 
 // Create a MongoClient
 const client = new MongoClient(uri, {
